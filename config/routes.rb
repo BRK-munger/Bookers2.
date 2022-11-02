@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root :to =>"homes#top"
   get "home/about"=>"homes#about"
   #検索ボタンが押された時,Searchesコントローラーのsearchアクションが実行できるように定義
-  get "/search", to: 'searches#search'
+  get '/search', to: 'searches#search'
 
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update]do
    resources :book_comments, only: [:create,:destroy]
