@@ -16,29 +16,11 @@
         </td>
         <td><%= link_to book.title,book, class: "book_#{book.id}" %></td>
         <td><%= book.body %></td>
-        <td>コメント数: <%= book.book_comments.count %></td>
         <td class=<%= "favorite-" + book.id.to_s %> >
           <%= render "favorites/btn", book: book %>
         </td>
-
-        <!--ここからが星レビュー機能の追加-->
-        <td>
-          <div id="star-rate<%= book.id%>"></div>
-          <script>
-            $('#star-rate<%= book.id %>').empty();
-            $('#star-rate<%= book.id %>').raty({
-              size : 36
-              starOff : '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              half : false,
-              readOnly : true,
-              score : <%= book.star %>,
-            });
-          </script>
-        </td>
-        <!--ここまで星レビュ機能の追加-->
-        <td><%= l book.created_at %></td>
         <td><%= render "book_comments/counter", book: book %></td>
+        <td><%= render "books/static_rate", book: book %></td>
       </tr>
     <% end %>
   </tbody>
